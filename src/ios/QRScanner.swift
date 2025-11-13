@@ -131,6 +131,9 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
         }
         do {
             if (captureSession?.isRunning != true){
+                        self.webView?.isOpaque = false
+        self.webView?.backgroundColor = UIColor.clear
+        self.webView?.scrollView.backgroundColor = UIColor.clear
                 cameraView.backgroundColor = UIColor.clear
                 self.webView!.superview!.insertSubview(cameraView, belowSubview: self.webView!)
                 let session = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
@@ -203,8 +206,8 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
 
     @objc func makeOpaque(){
         self.webView?.isOpaque = true
-        self.webView?.backgroundColor = UIColor.white
-        self.webView?.scrollView.backgroundColor = UIColor.white
+        self.webView?.backgroundColor = UIColor(red: 0.29, green: 0.80, blue: 0.51, alpha: 1.0)
+        self.webView?.scrollView.backgroundColor = UIColor(red: 0.29, green: 0.80, blue: 0.51, alpha: 1.0)
     }
 
     @objc func boolToNumberString(bool: Bool) -> String{
